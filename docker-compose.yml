@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  node:
+    image: node:14.15.1
+    volumes:
+      - .:/sauce
+    restart: "no"
+    working_dir: /sauce
+    user: "${DOCKER_USER}"
