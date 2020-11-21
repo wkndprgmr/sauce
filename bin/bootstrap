@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Installing npm packages..."
+
+docker-compose run --rm node npm install

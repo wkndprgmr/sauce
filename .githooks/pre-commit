@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+FILES=$(git diff --cached --name-only)
+[ -z "$FILES" ] && exit 0
+
+echo "==> Running pre-commit hook..."
+
+echo "$FILES" | xargs ./bin/lint
+
+exit 0
