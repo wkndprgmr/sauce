@@ -1,4 +1,6 @@
 {
+  "repository": "github:wkndprgmr/sauce",
+  "license": "AGPL-3.0",
   "scripts": {
     "fmt": "prettier --write ."
   },
