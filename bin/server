@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Making sure everything is up to date..."
+
+bin/update
+
+echo "==> Starting webserver..."
+
+docker-compose up

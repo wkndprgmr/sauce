@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+prettier_files="."
+
+if [ $# -ne 0 ]
+then
+  prettier_files=$@
+fi
+
+echo "==> Linting files..."
+
+set +e
+
+docker-compose run --rm node npx prettier --check --loglevel warn $prettier_files
+prettier_exit_code=$?
+
+docker-compose run --rm node npx jshint
+jshint_exit_code=$?
+
+set -e
+
+if [ $prettier_exit_code -ne 0 ] || [ $jshint_exit_code -ne 0 ]
+then
+  echo "==> Linting failed."
+  exit 1
+else
+  echo "==> Styling looks good!"
+fi
