@@ -3,7 +3,8 @@
   "license": "AGPL-3.0",
   "type": "module",
   "scripts": {
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write .",
+    "test": "ava"
   },
   "devDependencies": {
     "ava": "^3.13.0",
