@@ -1,11 +1,18 @@
 {
   "repository": "github:wkndprgmr/sauce",
   "license": "AGPL-3.0",
+  "type": "module",
   "scripts": {
     "fmt": "prettier --write ."
   },
   "devDependencies": {
+    "ava": "^3.13.0",
     "jshint": "^2.12.0",
-    "prettier": "^2.2.0"
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.0",
+    "test-listen": "^1.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

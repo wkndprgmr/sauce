@@ -1,5 +1,20 @@
 version: "3.7"
 services:
+  web:
+    image: node:14.15.1
+    volumes:
+      - .:/sauce
+    restart: "no"
+    working_dir: /sauce
+    command: ["npx", "nodemon", "src/main.js"]
+    ports:
+      - 80
+    networks:
+      default:
+      buoy:
+        aliases:
+          - sauce
+
   node:
     image: node:14.15.1
     volumes:
@@ -7,3 +22,8 @@ services:
     restart: "no"
     working_dir: /sauce
     user: "${DOCKER_USER}"
+
+networks:
+  buoy:
+    external:
+      name: buoy
