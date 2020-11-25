@@ -1,7 +1,6 @@
 {
   "repository": "github:wkndprgmr/sauce",
   "license": "AGPL-3.0",
-  "type": "module",
   "scripts": {
     "fmt": "prettier --write .",
     "test": "ava"
