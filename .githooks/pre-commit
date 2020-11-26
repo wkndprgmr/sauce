@@ -7,6 +7,6 @@ FILES=$(git diff --cached --name-only)
 
 echo "==> Running pre-commit hook..."
 
-echo "$FILES" | xargs ./bin/lint
+echo "$FILES" | xargs ./bin/npm-dev lint
 
 exit 0
