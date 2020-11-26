@@ -32,43 +32,37 @@ function sendToStderr(stderr) {
   process.stderr.write(stderr);
 }
 
-function prettier(argv = []) {
-  let files = ["."];
-  if (argv.length !== 0) {
-    files = argv.filter((f) => f.match(/\.(js|json|md|yml)$/));
-    if (files.length === 0) {
-      return Promise.resolve({});
-    }
-  }
-
+function prettier(files = []) {
+  const filteredFiles = filterFiles(/\.(js|json|md|yml)$/, files, ["."]);
   const cmd = [
     "npx",
     "prettier",
     "--loglevel",
     "warn",
     "--check",
-    ...files,
+    ...filteredFiles,
   ].join(" ");
 
   return exec(cmd).catch((err) => err);
 }
 
-function jshint(argv = []) {
-  let files = ["."];
-  if (argv.length !== 0) {
-    files = argv.filter((f) => f.match(/\.js$/));
-    if (files.length === 0) {
-      return Promise.resolve({});
-    }
-  }
-
+function jshint(files = []) {
+  const filteredFiles = filterFiles(/\.js$/, files, ["."]);
   const cmd = [
     "npx",
     "jshint",
     "--reporter",
     "./src/jshint-reporter.js",
-    ...files,
+    ...filteredFiles,
   ].join(" ");
 
   return exec(cmd).catch((err) => err);
+}
+
+function filterFiles(regex, files, defaultFiles) {
+  if (files.length === 0) {
+    return defaultFiles;
+  }
+
+  return files.filter((f) => f.match(regex));
 }
