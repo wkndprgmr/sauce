@@ -1,5 +1,6 @@
 orbs:
   node: circleci/node@4.1.0
+  gcp-cli: circleci/gcp-cli@2.1.0
 
 version: 2.1
 
@@ -7,16 +8,33 @@ jobs:
   lint:
     executor:
       name: node/default
-      tag: "14.15.1"
+      tag: "12.20"
     steps:
       - checkout
       - node/install-packages
       - run:
           command: npm run lint
+  deploy:
+    executor:
+      name: gcp-cli/google
+    steps:
+      - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - run:
+          command: gcloud app deploy app.yaml
 
 workflows:
-  app-tests:
+  test-and-deploy:
     jobs:
       - lint
       - node/test:
-          version: 14.15.1
+          version: "12.20"
+      - deploy:
+          requires:
+            - lint
+            - node/test
+          filters:
+            branches:
+              only:
+                - main

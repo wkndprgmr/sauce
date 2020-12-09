@@ -2,6 +2,7 @@
   "repository": "github:wkndprgmr/sauce",
   "license": "AGPL-3.0",
   "scripts": {
+    "start": "node src/main.js",
     "fmt": "prettier --write .",
     "lint": "./scripts/lint.js",
     "test": "ava"

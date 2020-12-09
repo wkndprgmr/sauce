@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   web:
-    image: node:14.15.1
+    image: node:12
     volumes:
       - .:/sauce
     restart: "no"
@@ -16,7 +16,7 @@ services:
           - sauce
 
   node:
-    image: node:14.15.1
+    image: node:12
     volumes:
       - .:/sauce
     restart: "no"

@@ -1,3 +1,6 @@
 const app = require("./app");
 
-app.listen(80);
+const PORT = process.env.PORT || 80;
+app.listen(PORT, () => {
+  console.log(`sauce listening on port ${PORT}`);
+});
