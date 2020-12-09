@@ -8,7 +8,7 @@ jobs:
   lint:
     executor:
       name: node/default
-      tag: "12"
+      tag: "12.20"
     steps:
       - checkout
       - node/install-packages
@@ -29,7 +29,7 @@ workflows:
     jobs:
       - lint
       - node/test:
-          version: "12"
+          version: "12.20"
       - deploy:
           requires:
             - lint
