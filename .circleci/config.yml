@@ -34,3 +34,7 @@ workflows:
           requires:
             - lint
             - node/test
+          filters:
+            branches:
+              only:
+                - main
