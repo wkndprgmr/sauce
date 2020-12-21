@@ -2,4 +2,4 @@
 
 set -e
 
-docker-compose run --rm node npm run $@
+docker-compose run --rm node npm $@
